@@ -1,0 +1,171 @@
+📁 Project File Structure
+MechanicalBuddy/
+│
+├── public/
+│   ├── index.html
+│   └── vite.svg
+│
+├── src/
+│   ├── assets/
+│   │   └── logo.png
+│   │
+│   ├── components/
+│   │   ├── AuthCard.jsx
+│   │   ├── GlassButton.jsx
+│   │   └── InputField.jsx
+│   │
+│   ├── pages/
+│   │   ├── UnifiedLogin.jsx
+│   │   ├── CustomerLogin.jsx
+│   │   ├── CustomerRegisterPage.jsx
+│   │   ├── MechanicLoginPage.jsx
+│   │   ├── MechanicRegisterPage.jsx
+│   │   └── MechanicRegister.jsx
+│   │
+│   ├── styles/
+│   │   ├── auth.css
+│   │   ├── customerLogin.css
+│   │   ├── customerRegister.css
+│   │   ├── mechanicLogin.css
+│   │   ├── mechanicRegister.css
+│   │   └── unifiedLogin.css
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+└── vite.config.js
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           MECHANICAL BUDDY DATABASE                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌───────────────────┐
+│     CUSTOMER      │
+├───────────────────┤
+│ PK │ customer_id  │
+│    │ full_name    │
+│    │ mobile_number│
+│    │ email        │
+│    │ password     │
+│    │ location     │
+│    │ created_at   │
+│    │ updated_at   │
+└─────────┬─────────┘
+          │
+          │ 1
+          │
+          │ M
+          ▼
+┌───────────────────┐
+│     VEHICLE       │
+├───────────────────┤
+│ PK │ vehicle_id   │
+│ FK │ customer_id  │
+│    │ vehicle_number│
+│    │ vehicle_type │
+│    │ brand        │
+│    │ model        │
+│    │ year         │
+└─────────┬─────────┘
+          │
+          │ 1
+          │
+          │ M
+          ▼
+┌───────────────────┐
+│  SERVICE_REQUEST  │
+├───────────────────┤
+│ PK │ request_id   │
+│ FK │ customer_id  │
+│ FK │ mechanic_id  │
+│ FK │ vehicle_id   │
+│    │ service_type │
+│    │ description  │
+│    │ location     │
+│    │ status       │
+│    │ created_at   │
+│    │ updated_at   │
+└─────────┬─────────┘
+          │
+          │ M
+          │
+          │ 1
+          ▼
+┌───────────────────┐
+│     MECHANIC      │
+├───────────────────┤
+│ PK │ mechanic_id  │
+│    │ full_name    │
+│    │ garage_name  │
+│    │ mobile_number│
+│    │ email        │
+│    │ password     │
+│    │ service_type │
+│    │ location     │
+│    │ experience   │
+│    │ rating       │
+│    │ is_verified  │
+│    │ is_available │
+│    │ created_at   │
+└─────────┬─────────┘
+          │
+          │ 1
+          │
+          │ M
+          ▼
+┌───────────────────┐
+│     PAYMENT       │
+├───────────────────┤
+│ PK │ payment_id   │
+│ FK │ request_id   │
+│ FK │ customer_id  │
+│    │ amount       │
+│    │ payment_method│
+│    │ transaction_id│
+│    │ status       │
+│    │ payment_date │
+└───────────────────┘
+
+┌───────────────────┐
+│     REVIEW        │
+├───────────────────┤
+│ PK │ review_id    │
+│ FK │ request_id   │
+│ FK │ customer_id  │
+│ FK │ mechanic_id  │
+│    │ rating       │
+│    │ comment      │
+│    │ created_at   │
+└───────────────────┘
+
+┌───────────────────┐
+│    EMERGENCY      │
+│      ALERT        │
+├───────────────────┤
+│ PK │ alert_id     │
+│ FK │ customer_id  │
+│ FK │ mechanic_id  │
+│    │ location     │
+│    │ description  │
+│    │ status       │
+│    │ created_at   │
+└───────────────────┘
+
+┌───────────────────┐
+│   NOTIFICATION    │
+├───────────────────┤
+│ PK │ notif_id     │
+│ FK │ user_id      │
+│    │ user_type    │
+│    │ title        │
+│    │ message      │
+│    │ is_read      │
+│    │ created_at   │
+└───────────────────┘
